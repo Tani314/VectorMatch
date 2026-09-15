@@ -1,5 +1,5 @@
 """
-End-to-end demo of embedding-based retrieval.
+End-to-end demo of VectorMatch.
 
 Run: python demo.py
 

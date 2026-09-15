@@ -16,7 +16,7 @@ nearest neighbor (ANN) index - FAISS (IVF/HNSW), ScaNN, or a managed vector
 database like Pinecone or pgvector - behind the same `add()` / `search()`
 interface. The accuracy/latency trade-off ANN indexes make (approximate
 instead of exact nearest neighbors, in exchange for sub-linear search time)
-is the central design decision in any real embedding retrieval system.
+is the central design decision in any real retrieval system like VectorMatch.
 """
 
 import json

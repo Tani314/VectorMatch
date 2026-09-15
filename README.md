@@ -1,7 +1,7 @@
-# Embedding-Based Retrieval
+# VectorMatch
 
-A small, dependency-light implementation of semantic (embedding-based)
-retrieval: given a free-text query, return the catalog items whose meaning
+VectorMatch is a small, dependency-light implementation of semantic
+(embedding-based) retrieval: given a free-text query, return the catalog items whose meaning
 is closest to it, ranked by vector similarity. This is the retrieval
 pattern behind recommendations, semantic search, and "more like this"
 features on any content platform.
@@ -18,7 +18,7 @@ stages:
    with much richer features (user history, freshness, business rules) to
    produce the final ordered list.
 
-This project implements the retrieval stage end to end: embedding text
+VectorMatch implements the retrieval stage end to end: embedding text
 into vectors, indexing those vectors, and searching them by similarity.
 
 ## Architecture
@@ -50,14 +50,14 @@ into vectors, indexing those vectors, and searching them by similarity.
 
 ## Production mapping
 
-| This project                        | Production equivalent                              |
+| VectorMatch                         | Production equivalent                              |
 |--------------------------------------|-----------------------------------------------------|
 | `embedder.py` (TF-IDF + SVD)         | sentence-transformers, OpenAI/Cohere embeddings API, or a two-tower model trained on interaction data |
 | `vector_index.py` (brute-force numpy)| FAISS (IVF/HNSW), ScaNN, Pinecone, or pgvector       |
 | `catalog.py`                         | Content metadata table / feature store               |
 | `search_service.py`                  | Retrieval microservice sitting in front of a ranking model |
 
-The most important thing this project demonstrates isn't the embedding
+The most important thing VectorMatch demonstrates isn't the embedding
 quality (TF-IDF+SVD is intentionally simple and runs with no external
 downloads) - it's the **interface boundary**: everything downstream of
 `encode()` only depends on getting back a fixed-size vector, so swapping in
@@ -105,7 +105,7 @@ python tests/test_retrieval.py
 
 ## Background
 
-Built as a portfolio project to demonstrate the embedding-based retrieval
-pattern used in modern recommendation and search systems - the same
-architectural shape used by production systems built on FAISS, pgvector,
-or managed vector databases.
+VectorMatch was built as a portfolio project to demonstrate the
+embedding-based retrieval pattern used in modern recommendation and
+search systems - the same architectural shape used by production systems
+built on FAISS, pgvector, or managed vector databases.
